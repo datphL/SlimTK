@@ -451,12 +451,12 @@ namespace SlimTK
 			return Equals((BoundingBox) obj);
 		}
 
-#if SlimDX1xInterop
-/// <summary>
-/// Performs an implicit conversion from <see cref="SlimMath.BoundingBox"/> to <see cref="SlimDX.BoundingBox"/>.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns>The result of the conversion.</returns>
+		#if SlimDX1xInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimMath.BoundingBox"/> to <see cref="SlimDX.BoundingBox"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
         public static implicit operator SlimDX.BoundingBox(BoundingBox value)
         {
             return new SlimDX.BoundingBox(value.Minimum, value.Maximum);
@@ -471,14 +471,14 @@ namespace SlimTK
         {
             return new BoundingBox(value.Minimum, value.Maximum);
         }
-#endif
+		#endif
 
-#if XnaInterop
-/// <summary>
-/// Performs an implicit conversion from <see cref="SlimMath.BoundingBox"/> to <see cref="Microsoft.Xna.Framework.BoundingBox"/>.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns>The result of the conversion.</returns>
+		#if XnaInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimMath.BoundingBox"/> to <see cref="Microsoft.Xna.Framework.BoundingBox"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
         public static implicit operator Microsoft.Xna.Framework.BoundingBox(BoundingBox value)
         {
             return new Microsoft.Xna.Framework.BoundingBox(value.Minimum, value.Maximum);
@@ -493,6 +493,28 @@ namespace SlimTK
         {
             return new BoundingBox(value.Min, value.Max);
         }
-#endif
+		#endif
+
+		#if libwarcraftInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimTK.BoundingBox"/> to <see cref="Warcraft.Core.Box"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
+        public static implicit operator Warcraft.Core.Box(BoundingBox value)
+        {
+            return new Warcraft.Core.Box(value.Minimum.AsWarcraftVector(), value.Maximum.AsWarcraftVector());
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Warcraft.Core.Box"/> to <see cref="SlimTK.BoundingBox"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator BoundingBox(Warcraft.Core.Box value)
+        {
+            return new BoundingBox(value.BottomCorner.AsOpenTKVector(), value.TopCorner.AsOpenTKVector());
+        }
+		#endif
 	}
 }

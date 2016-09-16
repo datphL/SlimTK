@@ -496,12 +496,12 @@ namespace SlimTK
 			return Equals((BoundingSphere) obj);
 		}
 
-#if SlimDX1xInterop
-/// <summary>
-/// Performs an implicit conversion from <see cref="SlimMath.BoundingSphere"/> to <see cref="SlimDX.BoundingSphere"/>.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns>The result of the conversion.</returns>
+		#if SlimDX1xInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimMath.BoundingSphere"/> to <see cref="SlimDX.BoundingSphere"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
         public static implicit operator SlimDX.BoundingSphere(BoundingSphere value)
         {
             return new SlimDX.BoundingSphere(value.Center, value.Radius);
@@ -516,14 +516,14 @@ namespace SlimTK
         {
             return new BoundingSphere(value.Center, value.Radius);
         }
-#endif
+		#endif
 
-#if XnaInterop
-/// <summary>
-/// Performs an implicit conversion from <see cref="SlimMath.BoundingSphere"/> to <see cref="Microsoft.Xna.Framework.BoundingSphere"/>.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns>The result of the conversion.</returns>
+		#if XnaInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimMath.BoundingSphere"/> to <see cref="Microsoft.Xna.Framework.BoundingSphere"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
         public static implicit operator Microsoft.Xna.Framework.BoundingSphere(BoundingSphere value)
         {
             return new Microsoft.Xna.Framework.BoundingSphere(value.Center, value.Radius);
@@ -538,6 +538,28 @@ namespace SlimTK
         {
             return new BoundingSphere(value.Center, value.Radius);
         }
-#endif
+		#endif
+
+		#if libwarcraftInterop
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SlimTK.BoundingSphere"/> to <see cref="Warcraft.Core.Sphere"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
+		public static implicit operator Warcraft.Core.Sphere(BoundingSphere value)
+		{
+			return new Warcraft.Core.Sphere(value.Center.AsWarcraftVector(), value.Radius);
+		}
+
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="Warcraft.Core.Sphere"/> to <see cref="SlimTK.BoundingSphere"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The result of the conversion.</returns>
+		public static implicit operator BoundingSphere(Warcraft.Core.Sphere value)
+		{
+			return new BoundingSphere(value.Position.AsOpenTKVector(), value.Radius);
+		}
+		#endif
 	}
 }

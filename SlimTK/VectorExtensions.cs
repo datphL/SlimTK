@@ -24,11 +24,34 @@
 using System;
 using System.Globalization;
 using OpenTK;
+using Warcraft.Core;
 
 namespace SlimTK
 {
 	public static class VectorExtensions
 	{
+		/// <summary>
+		/// Converts a <see cref="Warcraft.Core.Vector3f"/> value to an equivalent
+		/// <see cref="OpenTK.Vector3"/> value.
+		/// </summary>
+		/// <param name="vector">A Vector3f value.</param>
+		/// <returns>The Vector3f as a Vector3.</returns>
+		public static Vector3 AsOpenTKVector(this Vector3f vector)
+		{
+			return new Vector3(vector.X, vector.Y, vector.Z);
+		}
+
+		/// <summary>
+		/// Converts a <see cref="OpenTK.Vector3"/> value to an equivalent
+		/// <see cref="Warcraft.Core.Vector3f"/> value.
+		/// </summary>
+		/// <param name="vector">A Vector3 value.</param>
+		/// <returns>The Vector3 as a Vector3f.</returns>
+		public static Vector3f AsWarcraftVector(this Vector3 vector)
+		{
+			return new Vector3f(vector.X, vector.Y, vector.Z);
+		}
+
 		/// <summary>
 		/// Determines whether the specified <see cref="SlimMath.Vector3"/> is equal to this instance.
 		/// </summary>
