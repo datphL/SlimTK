@@ -51,13 +51,12 @@ namespace SlimTK
 		{
 			return new Vector3f(vector.X, vector.Y, vector.Z);
 		}
-
 		/// <summary>
-		/// Determines whether the specified <see cref="SlimMath.Vector3"/> is equal to this instance.
+		/// Determines whether the specified <see cref="OpenTK.Vector3"/> is equal to this instance.
 		/// </summary>
-		/// <param name="other">The <see cref="SlimMath.Vector3"/> to compare with this instance.</param>
+		/// <param name="other">The <see cref="OpenTK.Vector3"/> to compare with this instance.</param>
 		/// <returns>
-		/// <c>true</c> if the specified <see cref="SlimMath.Vector3"/> is equal to this instance; otherwise, <c>false</c>.
+		/// <c>true</c> if the specified <see cref="OpenTK.Vector3"/> is equal to this instance; otherwise, <c>false</c>.
 		/// </returns>
 		public static bool Equals(Vector3 vector, Vector3 other)
 		{
@@ -65,12 +64,12 @@ namespace SlimTK
 		}
 
 		/// <summary>
-		/// Determines whether the specified <see cref="SlimMath.Vector3"/> is equal to this instance.
+		/// Determines whether the specified <see cref="OpenTK.Vector3"/> is equal to this instance.
 		/// </summary>
-		/// <param name="other">The <see cref="SlimMath.Vector3"/> to compare with this instance.</param>
+		/// <param name="other">The <see cref="OpenTK.Vector3"/> to compare with this instance.</param>
 		/// <param name="epsilon">The amount of error allowed.</param>
 		/// <returns>
-		/// <c>true</c> if the specified <see cref="SlimMath.Vector3"/> is equal to this instance; otherwise, <c>false</c>.
+		/// <c>true</c> if the specified <see cref="OpenTK.Vector3"/> is equal to this instance; otherwise, <c>false</c>.
 		/// </returns>
 		public static bool Equals(Vector3 vector, Vector3 other, float epsilon)
 		{
