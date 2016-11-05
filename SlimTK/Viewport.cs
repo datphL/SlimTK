@@ -251,9 +251,8 @@ namespace SlimTK
 		/// <param name="vector">The projected vector.</param>
 		public void Project(ref Vector3 source, ref Matrix4 matrix, out Vector3 vector)
 		{
-			Vector3.Transform(ref source, ref matrix, out vector);
+			VectorMath.Transform(ref source, ref matrix, out vector);
 			float a = (((source.X * matrix.M14) + (source.Y * matrix.M24)) + (source.Z * matrix.M34)) + matrix.M44;
-
 			if (!MathUtil.IsOne(a))
 			{
 				vector = (vector / a);
@@ -295,7 +294,7 @@ namespace SlimTK
 			vector.Z = (source.Z - MinDepth) / (MaxDepth - MinDepth);
 
 			float a = (((vector.X * matrix.M14) + (vector.Y * matrix.M24)) + (vector.Z * matrix.M34)) + matrix.M44;
-			Vector3.Transform(ref vector, ref matrix, out vector);
+			VectorMath.Transform(ref vector, ref matrix, out vector);
 
 			if (!MathUtil.IsOne(a))
 			{
