@@ -744,8 +744,7 @@ namespace SlimTK
 			float z = plane.Normal.Z;
 			float d = plane.D;
 
-			Matrix4 inverse;
-			Matrix4.Invert(ref transformation, out inverse);
+			Matrix4 inverse = transformation.Inverted();
 
 			result.Normal.X = (((x * inverse.M11) + (y * inverse.M12)) + (z * inverse.M13)) + (d * inverse.M14);
 			result.Normal.Y = (((x * inverse.M21) + (y * inverse.M22)) + (z * inverse.M23)) + (d * inverse.M24);
@@ -791,8 +790,7 @@ namespace SlimTK
 			if (planes == null)
 				throw new ArgumentNullException("planes");
 
-			Matrix4 inverse;
-			Matrix4.Invert(ref transformation, out inverse);
+			Matrix4 inverse = transformation.Inverted();
 
 			for (int i = 0; i < planes.Length; ++i)
 			{

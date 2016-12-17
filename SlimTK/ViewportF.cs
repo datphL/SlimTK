@@ -277,8 +277,7 @@ namespace SlimTK
 		/// <returns>The unprojected Vector.</returns>
 		public Vector3 Unproject(Vector3 source, Matrix4 projection, Matrix4 view, Matrix4 world)
 		{
-			Matrix4 matrix = projection * view * world;
-			Matrix4.Invert(ref matrix, out matrix);
+			Matrix4 matrix = (projection * view * world).Inverted();
 
 			Vector3 vector;
 			Unproject(ref source, ref matrix, out vector);

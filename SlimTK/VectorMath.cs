@@ -44,8 +44,7 @@ namespace SlimTK
 			ref Matrix4 worldViewProjection, out Vector3 result)
 		{
 			Vector3 v = new Vector3();
-			Matrix4 matrix;
-			Matrix4.Invert(ref worldViewProjection, out matrix);
+			Matrix4 matrix = worldViewProjection.Inverted();
 
 			v.X = (((vector.X - x) / width) * 2.0f) - 1.0f;
 			v.Y = -((((vector.Y - y) / height) * 2.0f) - 1.0f);
