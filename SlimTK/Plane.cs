@@ -705,7 +705,7 @@ namespace SlimTK
 		{
 			if (planes == null)
 			{
-				throw new ArgumentNullException("planes");
+				throw new ArgumentNullException(nameof(planes));
 			}
 
 			float x2 = rotation.X + rotation.X;
@@ -795,7 +795,7 @@ namespace SlimTK
 		{
 			if (planes == null)
 			{
-				throw new ArgumentNullException("planes");
+				throw new ArgumentNullException(nameof(planes));
 			}
 
 			Matrix4 inverse = transformation.Inverted();
