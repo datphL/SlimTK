@@ -271,7 +271,9 @@ namespace SlimTK
 				float distance = VectorMath.DistanceSquared(center, points[i]);
 
 				if (distance > radius)
+				{
 					radius = distance;
+				}
 			}
 
 			//Find the real distance from the DistanceSquared.
@@ -420,7 +422,7 @@ namespace SlimTK
 		/// </returns>
 		public override string ToString()
 		{
-			return string.Format(CultureInfo.CurrentCulture, "Center:{0} Radius:{1}", Center.ToString(), Radius.ToString());
+			return string.Format(CultureInfo.CurrentCulture, "Center:{0} Radius:{1}", this.Center.ToString(), this.Radius.ToString());
 		}
 
 		/// <summary>
@@ -433,11 +435,11 @@ namespace SlimTK
 		public string ToString(string format)
 		{
 			if (format == null)
+			{
 				return ToString();
+			}
 
-			return string.Format(CultureInfo.CurrentCulture, "Center:{0} Radius:{1}",
-				Center.ToString(format, CultureInfo.CurrentCulture),
-				Radius.ToString(format, CultureInfo.CurrentCulture));
+			return string.Format(CultureInfo.CurrentCulture, "Center:{0} Radius:{1}", this.Center.ToString(format, CultureInfo.CurrentCulture), this.Radius.ToString(format, CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -449,7 +451,7 @@ namespace SlimTK
 		/// </returns>
 		public string ToString(IFormatProvider formatProvider)
 		{
-			return string.Format(formatProvider, "Center:{0} Radius:{1}", Center.ToString(), Radius.ToString());
+			return string.Format(formatProvider, "Center:{0} Radius:{1}", this.Center.ToString(), this.Radius.ToString());
 		}
 
 		/// <summary>
@@ -463,10 +465,11 @@ namespace SlimTK
 		public string ToString(string format, IFormatProvider formatProvider)
 		{
 			if (format == null)
+			{
 				return ToString(formatProvider);
+			}
 
-			return string.Format(formatProvider, "Center:{0} Radius:{1}", Center.ToString(format, formatProvider),
-				Radius.ToString(format, formatProvider));
+			return string.Format(formatProvider, "Center:{0} Radius:{1}", this.Center.ToString(format, formatProvider), this.Radius.ToString(format, formatProvider));
 		}
 
 		/// <summary>
@@ -479,7 +482,7 @@ namespace SlimTK
 		{
 			unchecked
 			{
-				return (Center.GetHashCode() * 397) ^ Radius.GetHashCode();
+				return (this.Center.GetHashCode() * 397) ^ this.Radius.GetHashCode();
 			}
 		}
 
@@ -493,7 +496,7 @@ namespace SlimTK
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool Equals(ref BoundingSphere value)
 		{
-			return Center == value.Center && Radius == value.Radius;
+			return this.Center == value.Center && this.Radius == value.Radius;
 		}
 
 		/// <summary>
@@ -519,7 +522,9 @@ namespace SlimTK
 		public override bool Equals(object value)
 		{
 			if (!(value is BoundingSphere))
+			{
 				return false;
+			}
 
 			var strongValue = (BoundingSphere) value;
 			return Equals(ref strongValue);
