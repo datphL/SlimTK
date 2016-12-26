@@ -514,7 +514,7 @@ namespace SlimTK
 		/// </returns>
 		public override bool Equals(object value)
 		{
-			if (value == null || value.GetType() != GetType())
+			if (!(value is BoundingBox))
 			{
 				return false;
 			}
