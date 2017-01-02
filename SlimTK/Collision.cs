@@ -1315,6 +1315,11 @@ namespace SlimTK
 			return ContainmentType.Intersects;
 		}
 
+		public static ContainmentType BoxContainsFrustum(ref BoundingBox boundingBox, ref BoundingFrustum frustum)
+		{
+			throw new NotImplementedException();
+		}
+
 		/// <summary>
 		/// Determines whether a <see cref="BoundingSphere"/> contains a point.
 		/// </summary>

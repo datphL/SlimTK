@@ -278,6 +278,16 @@ namespace SlimTK
 			return Contains(ref sphere);
 		}
 
+		public ContainmentType Contains(ref BoundingFrustum frustum)
+		{
+			return Collision.BoxContainsFrustum(ref this, ref frustum);
+		}
+
+		public ContainmentType Contains(BoundingFrustum frustum)
+		{
+			return Contains(ref frustum);
+		}
+
 		/// <summary>
 		/// Constructs a <see cref="BoundingBox"/> that fully contains the given points.
 		/// </summary>

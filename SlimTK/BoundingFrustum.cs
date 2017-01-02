@@ -548,6 +548,9 @@ namespace SlimTK
 			Vector3 p, n;
 			Plane plane;
 			var result = ContainmentType.Contains;
+
+
+			// Check box inside / outside of frustum
 			for (int i = 0; i < 6; i++)
 			{
 				plane = GetPlane(i);
@@ -562,6 +565,7 @@ namespace SlimTK
 					result = ContainmentType.Intersects;
 				}
 			}
+
 			return result;
 		}
 
