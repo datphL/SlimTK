@@ -220,45 +220,45 @@ namespace SlimTK
 			//http://www.chadvernon.com/blog/resources/directx9/frustum-culling/
 
 			// Left plane
-			left.Normal.X = matrix.M14 + matrix.M11;
-			left.Normal.Y = matrix.M24 + matrix.M21;
-			left.Normal.Z = matrix.M34 + matrix.M31;
-			left.D = matrix.M44 + matrix.M41;
+			left.Normal.X = matrix.M41 + matrix.M11;
+			left.Normal.Y = matrix.M42 + matrix.M12;
+			left.Normal.Z = matrix.M43 + matrix.M13;
+			left.D = matrix.M44 + matrix.M14;
 			left.Normalize();
 
 			// Right plane
-			right.Normal.X = matrix.M14 - matrix.M11;
-			right.Normal.Y = matrix.M24 - matrix.M21;
-			right.Normal.Z = matrix.M34 - matrix.M31;
-			right.D = matrix.M44 - matrix.M41;
+			right.Normal.X = matrix.M41 - matrix.M11;
+			right.Normal.Y = matrix.M42 - matrix.M12;
+			right.Normal.Z = matrix.M43 - matrix.M13;
+			right.D = matrix.M44 - matrix.M14;
 			right.Normalize();
 
 			// Top plane
-			top.Normal.X = matrix.M14 - matrix.M12;
-			top.Normal.Y = matrix.M24 - matrix.M22;
-			top.Normal.Z = matrix.M34 - matrix.M32;
-			top.D = matrix.M44 - matrix.M42;
+			top.Normal.X = matrix.M41 - matrix.M21;
+			top.Normal.Y = matrix.M42 - matrix.M22;
+			top.Normal.Z = matrix.M43 - matrix.M23;
+			top.D = matrix.M44 - matrix.M24;
 			top.Normalize();
 
 			// Bottom plane
-			bottom.Normal.X = matrix.M14 + matrix.M12;
-			bottom.Normal.Y = matrix.M24 + matrix.M22;
-			bottom.Normal.Z = matrix.M34 + matrix.M32;
-			bottom.D = matrix.M44 + matrix.M42;
+			bottom.Normal.X = matrix.M41 + matrix.M21;
+			bottom.Normal.Y = matrix.M42 + matrix.M22;
+			bottom.Normal.Z = matrix.M43 + matrix.M23;
+			bottom.D = matrix.M44 + matrix.M24;
 			bottom.Normalize();
 
 			// Near plane
-			near.Normal.X = matrix.M13;
-			near.Normal.Y = matrix.M23;
-			near.Normal.Z = matrix.M33;
-			near.D = matrix.M43;
+			near.Normal.X = matrix.M41 + matrix.M31;
+			near.Normal.Y = matrix.M42 + matrix.M32;
+			near.Normal.Z = matrix.M43 + matrix.M33;
+			near.D = matrix.M44 + matrix.M34;
 			near.Normalize();
 
 			// Far plane
-			far.Normal.X = matrix.M14 - matrix.M13;
-			far.Normal.Y = matrix.M24 - matrix.M23;
+			far.Normal.X = matrix.M14 - matrix.M31;
+			far.Normal.Y = matrix.M24 - matrix.M32;
 			far.Normal.Z = matrix.M34 - matrix.M33;
-			far.D = matrix.M44 - matrix.M43;
+			far.D = matrix.M44 - matrix.M34;
 			far.Normalize();
 		}
 
@@ -391,12 +391,14 @@ namespace SlimTK
 		public FrustumCameraParams GetCameraParams()
 		{
 			var corners = GetCorners();
-			var cameraParam = new FrustumCameraParams();
-			cameraParam.Position = Get3PlanesInterPoint(ref this.pRight, ref this.pTop, ref this.pLeft);
-			cameraParam.LookAtDir = this.pNear.Normal;
-			cameraParam.UpDir = Vector3.Normalize(Vector3.Cross(this.pRight.Normal, this.pNear.Normal));
-			cameraParam.FOV = (float) ((Math.PI / 2.0 - Math.Acos(Vector3.Dot(this.pNear.Normal, this.pTop.Normal))) * 2);
-			cameraParam.AspectRatio = (corners[6] - corners[5]).Length / (corners[4] - corners[5]).Length;
+			var cameraParam = new FrustumCameraParams
+			{
+				Position = Get3PlanesInterPoint(ref this.pRight, ref this.pTop, ref this.pLeft),
+				LookAtDir = this.pNear.Normal,
+				UpDir = Vector3.Normalize(Vector3.Cross(this.pRight.Normal, this.pNear.Normal)),
+				FOV = (float) ((Math.PI / 2.0 - Math.Acos(Vector3.Dot(this.pNear.Normal, this.pTop.Normal))) * 2),
+				AspectRatio = (corners[6] - corners[5]).Length / (corners[4] - corners[5]).Length
+			};
 			cameraParam.ZNear = (cameraParam.Position + (this.pNear.Normal * this.pNear.D)).Length;
 			cameraParam.ZFar = (cameraParam.Position + (this.pFar.Normal * this.pFar.D)).Length;
 			return cameraParam;
