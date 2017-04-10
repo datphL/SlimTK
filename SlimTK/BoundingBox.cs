@@ -599,21 +599,21 @@ namespace SlimTK
 
 		#if libwarcraftInterop
 		/// <summary>
-		/// Performs an implicit conversion from <see cref="SlimTK.BoundingBox"/> to <see cref="Warcraft.Core.Box"/>.
+		/// Performs an implicit conversion from <see cref="SlimTK.BoundingBox"/> to <see cref="Warcraft.Core.Structures.Box"/>.
 		/// </summary>
 		/// <param name="value">The value.</param>
 		/// <returns>The result of the conversion.</returns>
-        public static implicit operator Warcraft.Core.Box(BoundingBox value)
+        public static implicit operator Warcraft.Core.Structures.Box(BoundingBox value)
         {
-            return new Warcraft.Core.Box(value.Minimum.AsWarcraftVector(), value.Maximum.AsWarcraftVector());
+            return new Warcraft.Core.Structures.Box(value.Minimum.AsWarcraftVector(), value.Maximum.AsWarcraftVector());
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Warcraft.Core.Box"/> to <see cref="SlimTK.BoundingBox"/>.
+        /// Performs an implicit conversion from <see cref="Warcraft.Core.Structures.Box"/> to <see cref="SlimTK.BoundingBox"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator BoundingBox(Warcraft.Core.Box value)
+        public static implicit operator BoundingBox(Warcraft.Core.Structures.Box value)
         {
             return new BoundingBox(value.BottomCorner.AsOpenTKVector(), value.TopCorner.AsOpenTKVector());
         }

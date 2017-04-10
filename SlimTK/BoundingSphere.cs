@@ -576,21 +576,21 @@ namespace SlimTK
 
 		#if libwarcraftInterop
 		/// <summary>
-		/// Performs an implicit conversion from <see cref="SlimTK.BoundingSphere"/> to <see cref="Warcraft.Core.Sphere"/>.
+		/// Performs an implicit conversion from <see cref="SlimTK.BoundingSphere"/> to <see cref="Warcraft.Core.Structures.Sphere"/>.
 		/// </summary>
 		/// <param name="value">The value.</param>
 		/// <returns>The result of the conversion.</returns>
-		public static implicit operator Warcraft.Core.Sphere(BoundingSphere value)
+		public static implicit operator Warcraft.Core.Structures.Sphere(BoundingSphere value)
 		{
-			return new Warcraft.Core.Sphere(value.Center.AsWarcraftVector(), value.Radius);
+			return new Warcraft.Core.Structures.Sphere(value.Center.AsWarcraftVector(), value.Radius);
 		}
 
 		/// <summary>
-		/// Performs an implicit conversion from <see cref="Warcraft.Core.Sphere"/> to <see cref="SlimTK.BoundingSphere"/>.
+		/// Performs an implicit conversion from <see cref="Warcraft.Core.Structures.Sphere"/> to <see cref="SlimTK.BoundingSphere"/>.
 		/// </summary>
 		/// <param name="value">The value.</param>
 		/// <returns>The result of the conversion.</returns>
-		public static implicit operator BoundingSphere(Warcraft.Core.Sphere value)
+		public static implicit operator BoundingSphere(Warcraft.Core.Structures.Sphere value)
 		{
 			return new BoundingSphere(value.Position.AsOpenTKVector(), value.Radius);
 		}
