@@ -582,7 +582,7 @@ namespace SlimTK
 		/// <returns>The result of the conversion.</returns>
 		public static implicit operator Warcraft.Core.Structures.Sphere(BoundingSphere value)
 		{
-			return new Warcraft.Core.Structures.Sphere(value.Center.AsWarcraftVector(), value.Radius);
+			return new Warcraft.Core.Structures.Sphere(value.Center.AsSIMDVector(), value.Radius);
 		}
 
 		/// <summary>

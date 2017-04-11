@@ -605,7 +605,7 @@ namespace SlimTK
 		/// <returns>The result of the conversion.</returns>
         public static implicit operator Warcraft.Core.Structures.Box(BoundingBox value)
         {
-            return new Warcraft.Core.Structures.Box(value.Minimum.AsWarcraftVector(), value.Maximum.AsWarcraftVector());
+            return new Warcraft.Core.Structures.Box(value.Minimum.AsSIMDVector(), value.Maximum.AsSIMDVector());
         }
 
         /// <summary>
